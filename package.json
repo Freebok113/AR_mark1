@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "@ui5/cli": "^2.11.3"
+  },
+  "name": "getstarted",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://freebok113@github.com/Freebok113/getStarted.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Freebok113/getStarted/issues"
+  },
+  "homepage": "https://github.com/Freebok113/getStarted#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
