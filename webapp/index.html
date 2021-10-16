@@ -23,13 +23,13 @@
 <body class="sapUiBody" style="margin: 0; overflow: hidden;">
 	<!--<div data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container" data-settings='{"id" : "KidDiary"}'></div> -->
 	<a-scene embedded arjs>
-		<a-marker type="pattern" patternUrl="/marker/marker.patt">
+		<a-marker-camera type="pattern" patternUrl="/marker/marker.patt">
 		  <a-entity
 			position="0 0 0"
 			scale="0.05 0.05 0.05"
 			gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
 		  ></a-entity>
-		</a-marker>
+		</a-marker-camera>
 		<a-entity camera></a-entity>
 	  </a-scene>
 </body>
