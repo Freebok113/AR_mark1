@@ -41,21 +41,32 @@
 	  </a-scene>
 
 	 end comment -->
-
+	  <!--
 	 <div id="profile" style="color: greenyellow; width: 300px; height: 300px; background-color: red; position: absolute; top: 00px; left: 0; z-index: -2">
 		Hello world!
 	</div>
 		
-		<!-- set AR.js to AFrame -->
+		 set AR.js to AFrame 
 		<a-scene embedded arjs="debugUIEnabled:false;">
-		  <!-- set marker -->
+		
 		  <a-marker preset="hiro">
 			<a-plane position="0.43 1.17 -1.48" rotation="-72 85 -88" scale="1 1 1" material="shader:html;target: #profile;"></a-plane>
 		  </a-marker>
 		
-		  <!-- set camera -->
+		  
 		  <a-entity camera></a-entity>
 		</a-scene>
+		-->
+
+
+		<a-scene embedded arjs='sourceType: webcam;'>
+			<a-marker preset='hiro'>
+				<a-plane position="0.43 1.17 -1.48" rotation="-72 85 -88" scale="1 1 1" material="shader:html;target: #profile;">
+					<a-text value="Hello There"></a-text>
+				</a-plane>
+			</a-marker>
+			<a-entity camera></a-entity>
+		  </a-scene>
 
 </body>
 </html>
