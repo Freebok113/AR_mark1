@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" ccontent="width=device-width,initial-scale=1,user-scalable=no">
 	<title>AR Mark 1</title>
 	<!-- init Aframe lib-->
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -27,18 +27,23 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="sapUiBody" style="margin: 0; overflow: hidden;">
-	<!-- init the div that you are going to show-->
+<body>
 	<div id="test">
-		<h2>Hello there!</h2>
+
+		<h3>test</h3>
+
 	</div>
 
-	<!--create aframe scene and marker for AR-->	
-	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled="false;' vr-mode-ui='enabled: false'>
+	<a-scene embedded arjs='debugUIEnabled:false;' vr-mode-ui="enabled: false">
+
 		<a-marker preset="hiro">
+
 			<a-plane width="1" height="1" rotation="-90 0 0" material="shader:html; target: #test"></a-plane>
+
 		</a-marker>
+
 		<a-entity camera></a-entity>
+
 	</a-scene>
 
 	<!--<div data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container" data-settings='{"id" : "KidDiary"}'></div> -->
