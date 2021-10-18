@@ -34,11 +34,18 @@
 		<a-marker markhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" preset="hiro">
 
 
-			<a-plane  width="1" height="1" rotation="-90 0 0" material="shader:html; target: #poster">
+			<a-plane nohandler width="1" height="1" rotation="-90 0 0" material="shader:html; target: #poster">
 			</a-plane>
+			<a-box color="tomato" opacity='0.7' position="1.1 0 0">
+				<a-text position="0 0.6 0" rotation="-90 0 0" value="No"></a-text>
+			</a-box>
+			<a-box yeshandler color="green" opacity='0.7' position="1.1 0 1.1">
+				<a-text position="0 0.6 0" rotation="-90 0 0" value="Yes" material="color: black;"></a-text>
+			</a-box>
+			<!--
 			<a-image clickhandler rotation="-90 0 0" position="1 1 0" src="#img"></a-image>
 			<a-image clickhandler2 rotation="-90 0 0" position="1 1 1" src="#sky"></a-image>
-			<!--
+			
 				<a-sky src="#sky"></a-sky>
 			<a-curvedimage src="#img" height="3.0" radius="3" theta-length="100" rotation="90 180 0" scale="0.8 0.8 0.8"></a-curvedimage>
 			-->
@@ -49,16 +56,16 @@
 	</a-scene>
 </body>
 <script>
-	AFRAME.registerComponent('clickhandler', {
+	AFRAME.registerComponent('yeshandler', {
         init: function() {
             this.el.addEventListener('click', () => {
-                alert('Clicked!')
+                alert('you voted yes')
             });
     }});
-	AFRAME.registerComponent('clickhandler2', {
+	AFRAME.registerComponent('nohandler', {
         init: function() {
             this.el.addEventListener('click', () => {
-                alert('clicked again')
+                alert('you voted no')
             });
     }});
 </script>
