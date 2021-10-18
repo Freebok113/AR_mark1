@@ -7,8 +7,9 @@ html {
 	width: 1000px;
 	height: 1000px;
 	font-size: 500%;
-    background-color: #fff;
+    background-color: moccasin;
     z-index: -50;
+    text-align: center;
     
 }
 
