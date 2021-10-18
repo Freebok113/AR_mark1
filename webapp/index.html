@@ -10,65 +10,59 @@
 	<script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.js"></script>
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<!-- init sapui5 bootstrap-->
-	<script id="sap-ui-bootstrap" 
-			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_fiori_3_dark" 
-			data-sap-ui-resourceroots='{"sap.ui.demo.basicTemplate": "./"}' 
-			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" 
-			data-sap-ui-compatVersion="edge" 
-			data-sap-ui-async="true"
-			data-sap-ui-frameOptions="trusted">
+	<script id="sap-ui-bootstrap" src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_fiori_3_dark" data-sap-ui-resourceroots='{"sap.ui.demo.basicTemplate": "./"}'
+		data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true" data-sap-ui-frameOptions="trusted">
 		</script>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 	<a-scene embedded arjs='debugUIEnabled:false;' vr-mode-ui="enabled: false">
-		<div id="sap" data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container" data-settings='{"id" : "KidDiary"}'></div>
+		<div id="sap" data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container"
+			data-settings='{"id" : "KidDiary"}'></div>
 		<div id="poster">
-			<h3>Hello!</h3>
+			<h2>Do you like our coffee?</h2>
 		</div>
 
 		<a-assets>
 			<img id="img" src="./img/robin.png">
+			<img id="sky" src="./img/sky.png">
 		</a-assets>
-		
-		<a-marker preset="hiro">
-			<a-plane width="1" height="1" rotation="-90 0 0" material="shader:html; target: #poster"></a-plane>
-			<a-image 
-            rotation="-90 0 0"
-			position="1 0 0"
-            src="#img"></a-image>
+
+		<a-marker markhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" preset="hiro">
+
+
+			<a-plane  width="1" height="1" rotation="-90 0 0" material="shader:html; target: #poster">
+			</a-plane>
+			<a-image clickhandler rotation="-90 0 0" position="1 1 0" src="#img"></a-image>
+			<a-image clickhandler2 rotation="-90 0 0" position="1 1 1" src="#sky"></a-image>
+			<!--
+				<a-sky src="#sky"></a-sky>
+			<a-curvedimage src="#img" height="3.0" radius="3" theta-length="100" rotation="90 180 0" scale="0.8 0.8 0.8"></a-curvedimage>
+			-->
 		</a-marker>
 
-		<a-entity camera></a-entity>
+		<a-entity camera>
+		</a-entity>
 	</a-scene>
 </body>
 <script>
-	var resizedCanvas = document.createElement("canvas");
-	var resizedContext = resizedCanvas.getContext("2d");
-	var width = element.clientWidth;
-	var height = element.clientHeight;
-	var aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-
-	if (width && height) {
-		//videoのサイズをキャンバスにセット
-		resizedCanvas.width = width;
-		resizedCanvas.height = height;
-
-		//カメラの画角でar側の縮小処理を変える
-		if (width > height) {
-			// 横長（PC)
-			resizedContext.draw(aScene, 0, 0, width, height);
-		} else {
-			// 縦長（スマホ）
-			var scale = height / width;
-			var scaledWidth = height * scale;
-			var marginLeft = (width - scaledWidth) / 2;
-			resizedContext.drawImage(aScene, marginLeft, 0, scaledWidth, height);
-		}
-		return resizedCanvas.toDataURL('image/png');
-	}
+	AFRAME.registerComponent('clickhandler', {
+        init: function() {
+            this.el.addEventListener('click', () => {
+                alert('Clicked!')
+            });
+    }});
+	AFRAME.registerComponent('clickhandler2', {
+        init: function() {
+            this.el.addEventListener('click', () => {
+                alert('clicked again')
+            });
+    }});
 </script>
+
+
 
 </html>
