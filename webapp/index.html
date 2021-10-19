@@ -19,7 +19,7 @@
 	<script>
 		AFRAME.registerComponent('yeshandler', {
 			init: function() {
-				this.el.addEventListener('click', () => {
+				this.el.addEventListener('touchend', () => {
 					alert('you voted yes')
 				});
 		}});
@@ -66,8 +66,7 @@
 			-->
 		</a-marker>
 
-		<a-entity camera>
-		</a-entity>
+		<a-entity camera></a-entity>
 	</a-scene>
 </body>
 
