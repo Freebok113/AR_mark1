@@ -1,24 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AR Mark 1</title>
-
-	<script id="sap-ui-bootstrap"
-			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_fiori_3_dark"
-			data-sap-ui-resourceroots='{
-				"sap.ui.demo.basicTemplate": "./"
-			}'
-			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-async="true"
-			data-sap-ui-frameOptions="trusted">
+	<meta charset="utf=8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>Powered By Glitch</title>
+	<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+	<script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.js"></script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<!-- init sapui5 bootstrap-->
+	<script id="sap-ui-bootstrap" src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_fiori_3_dark" data-sap-ui-resourceroots='{"sap.ui.demo.basicTemplate": "./"}'
+		data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true" data-sap-ui-frameOptions="trusted">
+		</script>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		AFRAME.registerComponent('yeshandler', {
+			init: function () {
+				this.el.addEventListener('click', () => {
+					alert('you voted yes')
+				});
+			}
+		});
+		AFRAME.registerComponent('nohandler', {
+			init: function () {
+				this.el.addEventListener('click', () => {
+					alert('you voted no')
+				});
+			}
+		});
 	</script>
 </head>
 
-<body class="sapUiBody">
-	<div data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container" data-settings='{"id" : "KidDiary"}'></div>
+<body>
+	<a-scene embedded arjs='debugUIEnabled:false;' vr-mode-ui="enabled: false">
+		<!--
+		<div id="sap" data-sap-ui-component data-name="sap.ui.demo.basicTemplate" data-id="container"
+			data-settings='{"id" : "KidDiary"}'></div>
+		<div id="poster">
+			<h2>Do you like our coffee?</h2>
+		</div>
+		-->
+
+		<a-assets>
+			<img id="gin" src="./img/newGin.jpeg">
+			<img id="glitch" src="./img/Glitch.png">
+		</a-assets>
+
+		<a-marker type="barcode" value="0">		
+			<a-entity>
+				<a-entity text="value: Powered by Glitch Augmented;"  position="0.2 1.6 2.7" rotation="-90 0 0"></a-entity>
+				<a-image src="#glitch" width="1.5" position="0 1.3 2.5" rotation="-90 0 0" opacity="0.7"></a-image>
+				<a-image src="#gin" width="2" height="4.0" position="0 2 0" rotation="-90 0 0"></a-image>
+			</a-entity>
+		</a-marker>
+		<!--
+		<a-marker emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" preset="hiro">
+			
+			<a-curvedimage src="#coffee" height="3.0" radius="4" theta-start="-60" theta-length="120" position="0 0 0" rotation="90 180 0" scale="0.8 0.8 0.8"></a-curvedimage>
+			
+			<a-plane  width="1" height="1" rotation="-90 0 0" material="shader:html; target: #poster">
+			</a-plane>
+			<a-box nohandler color="tomato" opacity='0.7' position="1.1 0 0">
+				<a-text position="0 0.7 0" rotation="-90 0 0" value="No"></a-text>
+			</a-box>
+			<a-box yeshandler color="green" opacity='0.7' position="1.1 0 1.1">
+				<a-text position="0 0.7 0" rotation="-90 0 0" value="Yes" material="color: black;"></a-text>
+			</a-box>
+			
+			<a-image clickhandler rotation="-90 0 0" position="1 1 0" src="#img"></a-image>
+			<a-image clickhandler2 rotation="-90 0 0" position="1 1 1" src="#sky"></a-image>
+			
+				<a-sky src="#sky"></a-sky>
+			<a-curvedimage src="#img" height="3.0" radius="3" theta-length="100" rotation="90 180 0" scale="0.8 0.8 0.8"></a-curvedimage>
+			
+		</a-marker>
+		-->
+
+		<a-entity camera>
+			<!--
+			<a-entity cursor="fuse: true; fuseTimeout: 1000"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: white; shader: flat; opacity: 0.7">
+			-->
+		</a-entity>
+		</a-entity>
+	</a-scene>
 </body>
 </html>
